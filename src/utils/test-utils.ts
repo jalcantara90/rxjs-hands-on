@@ -7,10 +7,6 @@ export function createTestscheduler() {
   })
 }
 
-export const testScheduler = new TestScheduler((actual, expected) => {
-  expect(actual).toEqual(expected);
-});
-
 export function logObservable<T>(obs$: Observable<T>, done: () => void) {
   obs$.subscribe({
     next: console.log,

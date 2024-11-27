@@ -1,4 +1,4 @@
-import { firstValueFrom, lastValueFrom, of } from 'rxjs';
+import { lastValueFrom } from 'rxjs';
 import { createObservablesWithMultipleValues } from '../01-creator-functions/creator-functions';
 import { fares } from '../fixtures/fares';
 import { discountPercentage } from '../utils/discount-percentage';
