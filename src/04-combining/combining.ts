@@ -1,55 +1,33 @@
-import {
-  combineLatest,
-  forkJoin,
-  map,
-  merge,
-  mergeMap,
-  Observable,
-  race,
-  switchMap,
-  withLatestFrom,
-  zip,
-} from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { Cart, CartProduct, Pokemon } from '../types';
 
 export function mergeObservable<T, U>(
   obs1$: Observable<T>,
   obs2$: Observable<U>
-): Observable<T | U> {
-  return merge(obs1$, obs2$);
-}
+): Observable<T | U> {}
 
 export function joinObservable<T, U>(
   observables$: [Observable<T>, Observable<U>]
-): Observable<[T, U]> {
-  return forkJoin(observables$);
-}
+): Observable<[T, U]> {}
 
 export function joinInPairs<T, U>(
   obs1$: Observable<T>,
   obs2$: Observable<U>
-): Observable<[T, U]> {
-  return zip(obs1$, obs2$);
-}
+): Observable<[T, U]> {}
 
 export function combineObservables<T, U>(
   observables$: [Observable<T>, Observable<U>]
-): Observable<[T, U]> {
-  return combineLatest(observables$);
-}
+): Observable<[T, U]> {}
 
 export function getFaster<T, U>(
   observables$: [Observable<T>, Observable<U>]
-): Observable<T | U> {
-  return race(observables$);
-}
+): Observable<T | U> {}
 
 export function addProductToCard(
   addProduct$: Observable<CartProduct>,
   cart$: Observable<Cart>
 ): Observable<Cart> {
   return addProduct$.pipe(
-    withLatestFrom(cart$),
     map(([addProduct, cart]) => {
       const cartProduct = cart.find(
         (product) => product.name === addProduct?.name
@@ -70,7 +48,7 @@ export function getAllPokemon(
   // eslint-disable-next-line no-unused-vars
   getPokemonById: (id: number) => Observable<Pokemon>
 ) {
-  return obs$.pipe(mergeMap(getPokemonById));
+  return obs$.pipe();
 }
 
 export function getLastPokemonAndCancelSearch(
@@ -78,5 +56,5 @@ export function getLastPokemonAndCancelSearch(
   // eslint-disable-next-line no-unused-vars
   getPokemonById: (id: number) => Observable<Pokemon>
 ) {
-  return obs$.pipe(switchMap(getPokemonById));
+  return obs$.pipe();
 }

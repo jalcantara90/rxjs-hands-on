@@ -1,21 +1,13 @@
-import { from, interval, Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 
-export function createObservableWithOneValue<T>(values: T): Observable<T> {
-  return of(values);
-}
+export function createObservableWithOneValue<T>(values: T): Observable<T> {}
 
 export function createObservablesWithMultipleValues(
   ...args: any[]
-): Observable<any> {
-  return from(args);
-}
+): Observable<any> {}
 
-export function createObservableEmitsValueEveryMS(): Observable<number> {
-  return interval(1);
-}
+export function createObservableEmitsValueEveryMS(): Observable<number> {}
 
 export function createObservableFromPromise(
   promise: Promise<any>
-): Observable<any> {
-  return from(promise);
-}
+): Observable<any> {}
