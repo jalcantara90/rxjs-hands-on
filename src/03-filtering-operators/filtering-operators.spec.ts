@@ -1,10 +1,7 @@
 import { TestScheduler } from 'rxjs/testing';
 import { createObservablesWithMultipleValues } from '../01-creator-functions/creator-functions';
 import {
-  birminghamToLondon,
-  glasGowToBirmingham,
   londonToBirmingham,
-  londonToManchester,
   manchesterToLondon,
   products,
 } from '../fixtures/products';
